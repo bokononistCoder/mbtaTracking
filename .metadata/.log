@@ -8,3 +8,126 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.e
 
 !ENTRY com.android.ide.eclipse.ddms 4 0 2012-05-07 13:17:49.514
 !MESSAGE DDMS files not found: C:\Dev\JavaDev\eclipse\platform-tools\adb.exe C:\Dev\JavaDev\eclipse\tools\hprof-conv.exe C:\Dev\JavaDev\eclipse\tools\traceview.bat 
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2012-05-07 13:25:59.685
+!MESSAGE Connection to http://marketplace.eclipse.org/repo/p2.index failed on Connection timed out: connect. Retry attempt 0 started
+!STACK 0
+java.net.ConnectException: Connection timed out: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:349)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.readInto(FileReader.java:295)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:80)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:130)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:721)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:640)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.engine.ProvisioningContext.loadMetadataRepository(ProvisioningContext.java:211)
+	at org.eclipse.equinox.p2.engine.ProvisioningContext.getLoadedMetadataRepositories(ProvisioningContext.java:194)
+	at org.eclipse.equinox.p2.engine.ProvisioningContext.getMetadata(ProvisioningContext.java:275)
+	at org.eclipse.equinox.internal.p2.director.SimplePlanner.gatherAvailableInstallableUnits(SimplePlanner.java:258)
+	at org.eclipse.equinox.internal.p2.director.SimplePlanner.getSolutionFor(SimplePlanner.java:318)
+	at org.eclipse.equinox.internal.p2.director.SimplePlanner.getProvisioningPlan(SimplePlanner.java:376)
+	at org.eclipse.equinox.internal.p2.operations.PlannerResolutionJob.runModal(PlannerResolutionJob.java:76)
+	at org.eclipse.equinox.p2.operations.ProfileChangeOperation.resolveModal(ProfileChangeOperation.java:115)
+	at org.eclipse.epp.internal.mpc.ui.operations.ProfileChangeOperationComputer.resolveModal(ProfileChangeOperationComputer.java:255)
+	at org.eclipse.epp.internal.mpc.ui.operations.ProfileChangeOperationComputer.resolve(ProfileChangeOperationComputer.java:244)
+	at org.eclipse.epp.internal.mpc.ui.operations.ProfileChangeOperationComputer.resolveInstall(ProfileChangeOperationComputer.java:177)
+	at org.eclipse.epp.internal.mpc.ui.operations.ProfileChangeOperationComputer.run(ProfileChangeOperationComputer.java:129)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SESSION 2012-05-07 14:19:00.689 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_17
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2012-05-07 14:19:31.371
+!MESSAGE Could not create view: 'org.eclipse.ui.internal.introview'.
+
+!ENTRY org.eclipse.ui 4 0 2012-05-07 14:19:41.708
+!MESSAGE Problems occurred restoring workbench.
+!SUBENTRY 1 unknown 0 0 2012-05-07 14:19:41.708
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-05-07 14:19:41.708
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-05-07 14:19:41.708
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.ui 4 0 2012-05-07 14:19:41.709
+!MESSAGE Unable to restore perspective: Workspace - Java.
+!SUBENTRY 2 org.eclipse.ui 0 0 2012-05-07 14:19:41.709
+!MESSAGE Problems occurred restoring perspective.
+!SUBENTRY 3 org.eclipse.ui 0 0 2012-05-07 14:19:41.709
+!MESSAGE 
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.ui 4 0 2012-05-07 14:19:41.709
+!MESSAGE Could not find view: org.eclipse.ui.internal.introview
+!SUBENTRY 1 unknown 0 0 2012-05-07 14:19:41.709
+!MESSAGE OK
+
+!ENTRY org.eclipse.ui.console 4 120 2012-05-07 17:41:01.943
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:1038)
+	at org.eclipse.ui.internal.console.ConsoleDocument.get(ConsoleDocument.java:28)
+	at org.eclipse.ui.internal.console.ConsolePatternMatcher$MatchJob.run(ConsolePatternMatcher.java:96)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ui.console 4 120 2012-05-07 17:41:01.970
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:1038)
+	at org.eclipse.ui.internal.console.ConsoleDocument.get(ConsoleDocument.java:28)
+	at org.eclipse.ui.internal.console.ConsolePatternMatcher$MatchJob.run(ConsolePatternMatcher.java:96)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.jobs 4 2 2012-05-07 17:41:01.978
+!MESSAGE An internal error occurred during: "Match Job".
+!STACK 0
+java.lang.NullPointerException
+	at java.util.regex.Matcher.getTextLength(Unknown Source)
+	at java.util.regex.Matcher.reset(Unknown Source)
+	at java.util.regex.Matcher.<init>(Unknown Source)
+	at java.util.regex.Pattern.matcher(Unknown Source)
+	at org.eclipse.ui.internal.console.ConsolePatternMatcher$MatchJob.run(ConsolePatternMatcher.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
