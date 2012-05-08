@@ -52,7 +52,7 @@ public class readXML extends DefaultHandler {
     public void startElement (String uri, String name,
 		      String qName, Attributes atts)
     {	
-//    	System.out.println("Start element: " + qName);
+    	System.out.println("Start element: " + qName);
     	if(qName.equalsIgnoreCase("Trip"))
     		bTrip=true;
     	else if(qName.equalsIgnoreCase("PlatformKey"))
@@ -69,7 +69,7 @@ public class readXML extends DefaultHandler {
 
     public void endElement (String uri, String name, String qName)
     {
-//    	System.out.println("End element: " + qName );
+    	System.out.println("End element: " + qName );
     }
 
 	public void characters(char ch[], int start, int length)
@@ -103,6 +103,75 @@ public class readXML extends DefaultHandler {
 	}
     
     
- 
+    
+    
+//    public void characters (char ch[], int start, int length)
+//    {
+//    	String c=new String(ch, start, length);
+//    	if(c!=" "&&c!="\n"&&c!="\r"&&c!=""&&c!="\t"&&c!="")
+//    		System.out.println("start characters : " + c);
+//    }
+
+    
+    /*
+    public void characters (char ch[], int start, int length)
+    {
+	System.out.print("Characters:    \"");
+	for (int i = start; i < start + length; i++) {
+	    switch (ch[i]) {
+	    case '\\':
+		System.out.print("\\\\");
+		break;
+	    case '"':
+		System.out.print("\\\"");
+		break;
+	    case '\n':
+		System.out.print("\\n");
+		break;
+	    case '\r':
+		System.out.print("\\r");
+		break;
+	    case '\t':
+		System.out.print("\\t");
+		break;
+	    default:
+		System.out.print(ch[i]);
+		break;
+	    }
+	}
+	System.out.print("\"\n");
+    }
+    
+    */
+    
+/*		
+	    public void startDocument() throws SAXException {
+	        System.out.println("start document   : ");
+	    }
+
+	    public void endDocument() throws SAXException {
+	        System.out.println("end document     : ");
+	    }
+
+	    public void startElement(String uri, String localName,
+	        String qName, Attributes attributes)
+	    throws SAXException {
+
+	        System.out.println("start element    : " + qName);
+	    }
+
+	    public void endElement(String uri, String localName, String qName)
+	    throws SAXException {
+	        System.out.println("end element      : " + qName);
+	    }
+
+	    public void characters(char ch[], int start, int length)
+	    throws SAXException {
+	        System.out.println("start characters : " +
+	            new String(ch, start, length));
+	    }
+
+	}
+	*/
 	
 }

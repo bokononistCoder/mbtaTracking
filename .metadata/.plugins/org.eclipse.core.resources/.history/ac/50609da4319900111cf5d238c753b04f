@@ -1,0 +1,29 @@
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
+
+
+	public class trainData
+	{
+		private String TripNumber;
+		private String PlatformKey;
+		private String InfomationType;
+		private Date D;
+		private Time TimeRemaining;
+		public String getTripNumber() {
+			return TripNumber;
+		}
+		public void setTripNumber(String tripNumber) {
+			TripNumber = tripNumber;
+		}
+		public String getPlatformKey() {
+			return PlatformKey;
+		}
+		public void setPlatformKey(String platformKey) {
+			PlatformKey = platformKey;
+		}
+
+		
+		
+		
+	}

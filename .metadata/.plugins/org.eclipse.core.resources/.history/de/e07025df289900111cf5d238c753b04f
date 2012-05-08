@@ -1,0 +1,16 @@
+import java.sql.Time;
+import java.util.Date;
+
+
+	public class trainData
+	{
+		private String Line;
+		private String TripNumber;
+		private String PlatformKey;
+		private String InfomationType;
+		private Date D;
+		private Time TimeRemaining;
+		
+		
+		
+	}
