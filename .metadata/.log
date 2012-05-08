@@ -131,3 +131,6 @@ java.lang.NullPointerException
 	at java.util.regex.Pattern.matcher(Unknown Source)
 	at org.eclipse.ui.internal.console.ConsolePatternMatcher$MatchJob.run(ConsolePatternMatcher.java:98)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ui 4 4 2012-05-08 15:25:08.170
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProblemView.

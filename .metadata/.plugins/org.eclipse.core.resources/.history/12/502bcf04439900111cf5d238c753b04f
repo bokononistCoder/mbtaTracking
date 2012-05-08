@@ -1,0 +1,228 @@
+import java.io.InputStream;
+import java.util.HashMap;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.helpers.XMLReaderFactory;
+
+
+public class readXML extends DefaultHandler {
+	
+	private boolean bTrip=false;
+	private boolean bPlatform=false;
+	private boolean bInfoType=false;
+	private boolean bTime=false;
+	private boolean bTimeRem=false;
+	
+	
+	readXML()
+	{
+		super();
+	}
+	
+	readXML(InputStream input)
+	{
+		try
+		{
+			XMLReader xr = XMLReaderFactory.createXMLReader();
+			readXML handler = new readXML();
+			xr.setContentHandler(handler);
+			xr.setErrorHandler(handler);
+			InputSource is= new InputSource(input);
+			xr.parse(is);
+		}
+		catch(Exception e)
+		{	
+			System.out.println("Error creating XMLReader");
+		}
+	}	
+	
+	
+	public void startDocument()
+	{
+		System.out.println("Document Started");
+	}
+	
+	public void endDocument()
+	{
+		System.out.println("Document Ended");
+	}
+	
+    public void startElement (String uri, String name,
+		      String qName, Attributes atts)
+    {	
+//    	System.out.println("Start element: " + qName);
+    	if(qName.equalsIgnoreCase("Trip"))
+    		bTrip=true;
+    	else if(qName.equalsIgnoreCase("PlatformKey"))
+    		bPlatform=true;
+    	else if(qName.equalsIgnoreCase("InformationType"))
+    		bInfoType=true;
+    	else if(qName.equalsIgnoreCase("Time"))
+    		bTime=true;
+    	else if(qName.equalsIgnoreCase("TimeRemaining"))
+    		bTimeRem=true;
+
+    	
+    }
+
+    public void endElement (String uri, String name, String qName)
+    {
+//    	System.out.println("End element: " + qName );
+    }
+
+	public void characters(char ch[], int start, int length)
+	{
+		 
+		if (bTrip)
+		{
+			trainData train = new trainData();
+			String tripNumber = new String(ch, start, length);
+			train.setTripNumber(tripNumber);
+			System.out.println("Trip Number : " + tripNumber);
+			bTrip = false;
+		}
+		else if (bPlatform)
+		{
+			System.out.println("Platform Key : " + new String(ch, start, length));
+			bPlatform = false;
+		}
+		else if (bInfoType)
+		{
+			System.out.println("Info Type : " + new String(ch, start, length));
+			bInfoType = false;
+		}
+		else if (bTime)
+		{
+			System.out.println("Time : " + new String(ch, start, length));
+			bTime = false;
+		}
+		else if (bTimeRem)
+		{
+			System.out.println("Time Remaining : " + new String(ch, start, length));
+			bTimeRem = false;
+		}
+	}
+    
+    private HashMap<String, platformData> initializePlatformMap()
+    {
+    	HashMap<String, platformData> pm=new HashMap<String, platformData>();
+    	
+    	//Red Line
+    	pm.put("RALEN", new platformData("Alewife Station","NB"));	
+    	pm.put("RDAVN",new platformData("Davis Station","NB"));
+    	pm.put("RDAVS",new platformData("Davis Station","SB"));
+    	pm.put("RPORN",new platformData("Porter Square Station","NB"));
+    	pm.put("RPORS",new platformData("Porter Square Station","SB"));
+    	pm.put("RHARN",new platformData("Harvard Square Station","NB"));
+    	pm.put("RHARS",new platformData("Harvard Square Station","SB"));
+    	pm.put("RCENN",new platformData("Central Square Station","NB"));
+    	pm.put("RCENS",new platformData("Central Square Station","SB"));
+    	pm.put("RKENN",new platformData("Kendall/MIT Station","NB"));
+    	pm.put("RKENS",new platformData("Kendall/MIT Station","SB"));
+    	pm.put("RMGHN",new platformData("Charles/MGH Station","NB"));
+    	pm.put("RMGHS",new platformData("Charles/MGH Station","SB"));
+    	pm.put("RPRKN",new platformData("Park St. Station","NB"));
+    	pm.put("RPRKS",new platformData("Park St. Station","SB"));
+    	pm.put("RDTCN",new platformData("Downtown Crossing Station","NB"));
+    	pm.put("RDTCS",new platformData("Downtown Crossing Station","SB"));
+    	pm.put("RSOUN",new platformData("South Station","NB"));
+    	pm.put("RSOUS",new platformData("South Station","SB"));
+    	pm.put("RBRON",new platformData("Broadway Station","NB"));
+    	pm.put("RBROS",new platformData("Broadway Station","SB"));
+    	pm.put("RANDN",new platformData("Andrew Station","NB"));
+    	pm.put("RANDS",new platformData("Andrew Station","SB"));
+    	pm.put("RJFKN",new platformData("JFK/UMass Station","NB"));
+    	pm.put("RJFKS",new platformData("JFK/UMass Station","SB"));
+    	pm.put("RSAVN",new platformData("Savin Hill Station","NB"));
+    	pm.put("RSAVS",new platformData("Savin Hill Station","SB"));
+    	pm.put("RFIEN",new platformData("Fields Corner Station","NB"));
+    	pm.put("RFIES",new platformData("Fields Corner Station","SB"));
+    	pm.put("RSHAN",new platformData("Shawmut Station","NB"));
+    	pm.put("RSHAS",new platformData("Shawmut Station","SB"));
+    	pm.put("RASHS",new platformData("Ashmont Station","SB"));
+    	pm.put("RNQUN",new platformData("North Quincy Station","NB"));
+    	pm.put("RNQUS",new platformData("North Quincy Station","SB"));
+    	pm.put("RWOLN",new platformData("Wollaston Station","NB"));
+    	pm.put("RWOLS",new platformData("Wollaston Station","SB"));
+    	pm.put("RQUCN",new platformData("Quincy Center Station","NB"));
+    	pm.put("RQUCS",new platformData("Quincy Center Station","SB"));
+    	pm.put("RQUAN",new platformData("Quincy Adams Station","NB"));
+    	pm.put("RQUAS",new platformData("Quincy Adams Station","SB"));
+    	pm.put("RBRAS",new platformData("Braintree Station","SB"));
+    	
+    	//Orange Line
+    	pm.put("OOAKN",new platformData("Oak Grove Station","NB"));
+    	pm.put("OMALN",new platformData("Malden Center Station","NB"));
+    	pm.put("OMALS",new platformData("Malden Center Station","SB"));
+    	pm.put("OWELN",new platformData("Wellington Station","NB"));
+    	pm.put("OWELS",new platformData("Wellington Station","SB"));
+    	pm.put("OSULN",new platformData("Sullivan Station","NB"));
+    	pm.put("OSULS",new platformData("Sullivan Station","SB"));
+    	pm.put("OCOMN",new platformData("Community College Station","NB"));
+    	pm.put("OCOMS",new platformData("Community College Station","SB"));
+    	pm.put("ONSTN",new platformData("North Station","NB"));
+    	pm.put("ONSTS",new platformData("North Station","SB"));
+    	pm.put("OHAYN",new platformData("Haymarket Station","NB"));
+    	pm.put("OHAYS",new platformData("Haymarket Station","SB"));
+    	pm.put("OSTNN",new platformData("State St. Station","NB"));
+    	pm.put("OSTSS",new platformData("State St. Station","SB"));
+    	pm.put("ODTNN",new platformData("Downtown Crossing Station","NB"));
+    	pm.put("ODTSS",new platformData("Downtown Crossing Station","SB"));
+    	pm.put("OCHNN",new platformData("Chinatown Station","NB"));
+    	pm.put("OCHSS",new platformData("Chinatown Station","SB"));
+    	pm.put("ONEMN",new platformData("Tufts Medical Center Station","NB"));
+    	pm.put("ONEMS",new platformData("Tufts Medical Center Station","SB"));
+    	pm.put("OBACN",new platformData("Back Bay Station","NB"));
+    	pm.put("OBACS",new platformData("Back Bay Station","SB"));
+    	pm.put("OMASN",new platformData("Massachusetts Ave. Station","NB"));
+    	pm.put("OMASS",new platformData("Massachusetts Ave. Station","SB"));
+    	pm.put("ORUGN",new platformData("Ruggles Station","NB"));
+    	pm.put("ORUGS",new platformData("Ruggles Station","SB"));
+    	pm.put("OROXN",new platformData("Roxbury Crossing Station","NB"));
+    	pm.put("OROXS",new platformData("Roxbury Crossing Station","SB"));
+    	pm.put("OJACN",new platformData("Jackson Square Station","NB"));
+    	pm.put("OJACS",new platformData("Jackson Square Station","SB"));
+    	pm.put("OSTON",new platformData("Stony Brook Station","NB"));
+    	pm.put("OSTOS",new platformData("Stony Brook Station","SB"));
+    	pm.put("OGREN",new platformData("Green St. Station","NB"));
+    	pm.put("OGRES",new platformData("Green St. Station","SB"));
+    	pm.put("OFORS",new platformData("Forest Hills Station","SB"));
+    	
+    	//Blue line
+    	pm.put("BWONE",new platformData("Wonderland Station","EB"));
+    	pm.put("BREVE",new platformData("Revere Beach Station","EB"));
+    	pm.put("BREVW",new platformData("Revere Beach Station","WB"));
+    	pm.put("BBEAE",new platformData("Beachmont Station","EB"));
+    	pm.put("BBEAW",new platformData("Beachmont Station","WB"));
+    	pm.put("BSUFE",new platformData("Suffolk Downs Station","EB"));
+    	pm.put("BSUFW",new platformData("Suffolk Downs Station","WB"));
+    	pm.put("BORHE",new platformData("Orient Heights Station","EB"));
+    	pm.put("BORHW",new platformData("Orient Heights Station","WB"));
+    	pm.put("BWOOE",new platformData("Wood Island Station","EB"));
+    	pm.put("BWOOW",new platformData("Wood Island Station","WB"));
+    	pm.put("BAIRE",new platformData("Airport Station","EB"));
+    	pm.put("BAIRW",new platformData("Airport Station","WB"));
+    	pm.put("BMAVE",new platformData("Maverick Station","EB"));
+    	pm.put("BMAVW",new platformData("Maverick Station","WB"));
+    	pm.put("BAQUE",new platformData("Aquarium Station","EB"));
+    	pm.put("BAQUW",new platformData("Aquarium Station","WB"));
+    	pm.put("BSTAE",new platformData("State St. Station","EB"));
+    	pm.put("BSTAW",new platformData("State St. Station","WB"));
+    	pm.put("BGOVE",new platformData("Government Center Station","EB"));
+    	pm.put("BGOVW",new platformData("Government Center Station","WB"));
+    	pm.put("BBOWE",new platformData("Bowdoin Station","EB"));
+    	pm.put("BBOWW",new platformData("Bowdoin Station","WB"));
+
+    	
+    	
+    	
+    	
+    	
+    	return (pm);
+    }
+ 
+	
+}
