@@ -16,15 +16,9 @@ public class readXML extends DefaultHandler {
 	private boolean bTime=false;
 	private boolean bTimeRem=false;
 	
-	//Hashmap of trainData's
-	private HashMap<platformData, trainData> trainSchedule=new HashMap<platformData, trainData>();
 	
-	//train data
 	private trainData train;
-	
-	//Lookup table for PlatoformKey and Platform, direction
 	private HashMap<String, platformData> platformLookup;
-	
 	
 	readXML()
 	{
@@ -33,6 +27,8 @@ public class readXML extends DefaultHandler {
 	
 	readXML(InputStream input)
 	{
+		//testHashMap();
+		
 		
 		try
 		{
@@ -103,7 +99,7 @@ public class readXML extends DefaultHandler {
 			
 			platformData pd=(platformData)platformLookup.get(PlatformKey);
 			if(pd==null)
-				System.out.println("Internal error. PlatformKey cannot be found");
+				System.out.println("pd is null");
 			
 			train.setPlatformName(pd.getPlatformName());
 			train.setDirection(pd.getDirection());
@@ -131,8 +127,6 @@ public class readXML extends DefaultHandler {
 		{
 			System.out.println("Time Remaining : " + new String(ch, start, length));
 			bTimeRem = false;
-			
-			trainSchedule.put(new platformData(train.getPlatformName(),train.getDirection()),train);
 		}
 	}
     
@@ -251,6 +245,19 @@ public class readXML extends DefaultHandler {
 			System.out.println("Error Generating Look Up Table");
 		else
 			System.out.println("Lookup Table initialized");
+    }
+ 
+    private void testHashMap()
+    {
+    	
+    	platformLookup=new HashMap<String, platformData>();
+    	platformLookup.put("Hello",new platformData("World","EB"));
+    	platformData p=platformLookup.get("Hello");
+    	if(p==null)
+    		System.out.println("p is null");
+    	else
+    		System.out.println(p.getPlatformName());
+    	
     }
 	
 }
