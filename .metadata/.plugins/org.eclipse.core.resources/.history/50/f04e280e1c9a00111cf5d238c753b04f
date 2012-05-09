@@ -1,3 +1,4 @@
+import java.sql.Time;
 import java.util.Date;
 
 
@@ -8,7 +9,7 @@ import java.util.Date;
 		private String Direction;
 		private String InfomationType;
 		private Date DateTime;
-		private Date TimeRemaining;
+		private Time TimeRemaining;
 		
 		
 		trainData()
@@ -22,9 +23,7 @@ import java.util.Date;
 			System.out.println("Platform Name: "+ PlatformName);
 			System.out.println("Train Direction: "+ Direction);
 			System.out.println("Status: "+ InfomationType);
-			System.out.println("Time: " + DateTime.toString());
-			System.out.println("Time Remaining: " + TimeRemaining.toString());
-
+//			System.out.println("Trip Number: "+ TripNumber);
 //			System.out.println("Trip Number: "+ TripNumber);
 		}
 		
@@ -41,10 +40,10 @@ import java.util.Date;
 		public void setInfomationType(String infomationType) {
 			InfomationType = infomationType;
 		}
-		public Date getTimeRemaining() {
+		public Time getTimeRemaining() {
 			return TimeRemaining;
 		}
-		public void setTimeRemaining(Date timeRemaining) {
+		public void setTimeRemaining(Time timeRemaining) {
 			TimeRemaining = timeRemaining;
 		}
 		public String getPlatformName() {

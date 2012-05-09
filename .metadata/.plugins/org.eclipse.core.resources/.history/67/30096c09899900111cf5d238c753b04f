@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -26,7 +25,7 @@ public class mbtaTrack {
             
             String pdirec=in.readLine(); // Get what the user types.
             in.close();
-            System.out.println("Searching: "+pname+"-"+pdirec);
+            System.out.println("Searching:"+pname+"-"+pdirec);
             rx.findTrain(pname+"-"+pdirec);
             
         }

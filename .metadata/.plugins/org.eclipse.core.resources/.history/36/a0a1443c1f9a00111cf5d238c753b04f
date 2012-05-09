@@ -1,3 +1,5 @@
+import java.sql.Time;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -7,7 +9,7 @@ import java.util.Date;
 		private String PlatformName;
 		private String Direction;
 		private String InfomationType;
-		private Date DateTime;
+		private Calendar DateTime;
 		private Date TimeRemaining;
 		
 		
@@ -23,7 +25,6 @@ import java.util.Date;
 			System.out.println("Train Direction: "+ Direction);
 			System.out.println("Status: "+ InfomationType);
 			System.out.println("Time: " + DateTime.toString());
-			System.out.println("Time Remaining: " + TimeRemaining.toString());
 
 //			System.out.println("Trip Number: "+ TripNumber);
 		}
@@ -44,7 +45,7 @@ import java.util.Date;
 		public Date getTimeRemaining() {
 			return TimeRemaining;
 		}
-		public void setTimeRemaining(Date timeRemaining) {
+		public void setTimeRemaining(Time timeRemaining) {
 			TimeRemaining = timeRemaining;
 		}
 		public String getPlatformName() {
@@ -59,10 +60,10 @@ import java.util.Date;
 		public void setDirection(String direction) {
 			Direction = direction;
 		}
-		public Date getDateTime() {
+		public Calendar getDateTime() {
 			return DateTime;
 		}
-		public void setDateTime(Date dateTime) {
+		public void setDateTime(Calendar dateTime) {
 			DateTime = dateTime;
 		}
 

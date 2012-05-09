@@ -1,8 +1,7 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Scanner;
 
 
 public class mbtaTrack {
@@ -18,15 +17,16 @@ public class mbtaTrack {
         	URLConnection conn = url.openConnection();
         	readXML rx=new readXML(conn.getInputStream());
         	
-        	BufferedReader in = new BufferedReader(new InputStreamReader(System.in)); 
+        	Scanner input=new Scanner(System.in);
 
             System.out.print("Enter a platform name: ");
-            String pname = in.readLine(); // Get what the user types.
+            String pname=input.next(); // Get what the user types.
             System.out.print("Enter a platform direction: ");
             
-            String pdirec=in.readLine(); // Get what the user types.
-            in.close();
-            System.out.println("Searching: "+pname+"-"+pdirec);
+            input=new Scanner(System.in);
+            String pdirec=input.next(); // Get what the user types.
+            input.close();
+            System.out.println("Searching:"+pname+"-"+pdirec);
             rx.findTrain(pname+"-"+pdirec);
             
         }

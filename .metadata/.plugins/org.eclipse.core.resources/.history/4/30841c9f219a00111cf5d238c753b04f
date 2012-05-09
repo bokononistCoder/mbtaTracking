@@ -1,5 +1,5 @@
 import java.io.InputStream;
-
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -145,16 +145,14 @@ public class readXML extends DefaultHandler {
 			Date date;
 			try {
 				date = new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss", Locale.ENGLISH).parse(DateTime);
-				train.setDateTime(date);
-				//System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
+				System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				System.out.println("Error parsing through date");
 				e.printStackTrace();
 			}
+		
 			
-			
-			System.out.println("Time : " + train.getDateTime());
+			System.out.println("Time : " + train.getDateTime().toString());
 			bTime = false;
 		}
 		else if (bTimeRem)
@@ -164,18 +162,16 @@ public class readXML extends DefaultHandler {
 			Date date;
 			try {
 				date = new SimpleDateFormat("kk:mm:ss", Locale.ENGLISH).parse(TimeRem);
-				train.setTimeRemaining(date);
-				//System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
+				System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				System.out.println("Error parsing through remaining time");
 				e.printStackTrace();
 			}
 			
 			
 			
 			
-			System.out.println("Time Remaining : " + train.getTimeRemaining());
+			System.out.println("Time Remaining : " + new String(ch, start, length));
 			bTimeRem = false;
 			
 			trainSchedule.put(train.getPlatformName() + "-" + train.getDirection(),train);

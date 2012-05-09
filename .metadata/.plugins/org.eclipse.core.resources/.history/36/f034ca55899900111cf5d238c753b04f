@@ -26,7 +26,7 @@ public class mbtaTrack {
             
             String pdirec=in.readLine(); // Get what the user types.
             in.close();
-            System.out.println("Searching: "+pname+"-"+pdirec);
+            System.out.println("Searching:"+pname+"-"+pdirec);
             rx.findTrain(pname+"-"+pdirec);
             
         }

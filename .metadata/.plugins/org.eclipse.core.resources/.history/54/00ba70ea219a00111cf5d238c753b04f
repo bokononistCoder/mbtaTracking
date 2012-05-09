@@ -23,7 +23,6 @@ import java.util.Date;
 			System.out.println("Train Direction: "+ Direction);
 			System.out.println("Status: "+ InfomationType);
 			System.out.println("Time: " + DateTime.toString());
-			System.out.println("Time Remaining: " + TimeRemaining.toString());
 
 //			System.out.println("Trip Number: "+ TripNumber);
 		}
